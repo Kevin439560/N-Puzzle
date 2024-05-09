@@ -6,29 +6,26 @@ import numpy as np
 class Board:
     def __init__(self, N):
         self.N = N
-        self.linhas = int(math.sqrt(N + 1))
-        self.colunas = int(math.sqrt(N + 1))
+        self.linhas, self.colunas = self.calcular_dimensoes(N)
         self.matriz = self.criar_matriz()
+
+    def calcular_dimensoes(self, N):
+        dimensoes = 1
+        while dimensoes * dimensoes < N:
+            dimensoes += 1
+        return dimensoes, dimensoes
 
     def criar_matriz(self):
         matriz = np.empty((self.linhas, self.colunas), dtype=object)
-        valor = 1
+        valores_unicos = list(range(1, self.N + 1))
+        random.shuffle(valores_unicos)
+        valores_unicos.append('_')  # Adiciona o espaço vazio representado por um underline
+        random.shuffle(valores_unicos)  # Embaralha novamente para garantir que o espaço vazio seja aleatório
         
+        indice_valor = 0
         for i in range(self.linhas):
             for j in range(self.colunas):
-                matriz[i, j] = Node(valor, random.randint(2, 100))  # Exemplo de valor aleatório
-                valor += 1
-        
-        # Adicionar vizinhos
-        for i in range(self.linhas):
-            for j in range(self.colunas):
-                if i > 0:
-                    matriz[i, j].adicionar_vizinho(matriz[i - 1, j])  # Vizinho acima
-                if i < self.linhas - 1:
-                    matriz[i, j].adicionar_vizinho(matriz[i + 1, j])  # Vizinho abaixo
-                if j > 0:
-                    matriz[i, j].adicionar_vizinho(matriz[i, j - 1])  # Vizinho à esquerda
-                if j < self.colunas - 1:
-                    matriz[i, j].adicionar_vizinho(matriz[i, j + 1])  # Vizinho à direita
+                matriz[i, j] = Node(valores_unicos[indice_valor], valores_unicos[indice_valor])
+                indice_valor += 1
         
         return matriz
