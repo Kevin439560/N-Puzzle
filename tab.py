@@ -6,7 +6,7 @@ import numpy as np
 def board(N):
     lines = 1
     col = 1
-  
+
     linhas = int(math.sqrt(N + 1))
     colunas = int(math.sqrt(N + 1))
     
