@@ -1,12 +1,10 @@
-from menu import switch
-from assets.utility import gerar_matriz
-
+from menu import menu as menu_module 
 
 def main():
     while(True):
-        """ case = int(input("Digite qual a opção: "))
-        switch(case) """
-        gerar_matriz()
-
+        menu = menu_module()       
+        case = int(input("Escolha um algoritmo: "))
+        menu.switch(case)
+        
 if __name__ == "__main__":
     main()
