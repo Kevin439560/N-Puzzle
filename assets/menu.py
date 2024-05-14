@@ -1,4 +1,4 @@
-from metodos import Metodos
+from metodos import metodos as metodos_module
 from assets.utility import utility
 
 class menu:
@@ -19,10 +19,11 @@ class menu:
             print("Caso inválido")
     
     def caseBL(self):
-        metodos = Metodos()      
+        metodos = metodos_module()      
         util = utility() 
-        matriz_gerada = util.gerar_matriz()    
-        metodos.busca_em_largura(matriz_gerada)
+        matriz_gerada = util.gerar_matriz()
+        matriz_embaralhada = util.embaralhar_matriz()
+        metodos.busca_em_largura(matriz_gerada, matriz_embaralhada)
         
         print("BL")
     

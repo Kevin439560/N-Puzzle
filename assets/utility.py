@@ -28,9 +28,16 @@ class utility:
         verificacao = math.sqrt(int(N)+1)
     
         if self.verifica_zeros_apos_virgula(verificacao):
-            tabuleiro = Board(int(N))
+            tabuleiro = board(int(N))
             matriz = tabuleiro.criar_matriz()
             self.imprimir_matriz(matriz)
             return tabuleiro.matriz
     
         return "O número não atende a restrição"
+    
+    def embaralhar_matriz(self, matriz):
+        valores_matriz = matriz.flatten().tolist()
+        random.shuffle(valores_matriz)
+        matriz_embaralhada = np.array(valores_matriz).reshape((self.linhas, self.colunas))
+        
+        return matriz_embaralhada

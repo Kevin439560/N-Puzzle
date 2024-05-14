@@ -1,8 +1,13 @@
-from menu import menu as menu_module 
+from assets.menu import menu as menu_module 
 
 def main():
     while(True):
-        menu = menu_module()       
+        menu = menu_module()  
+        print("(1): Busca em largura")     
+        print("(2): Busca em profundidade iterativa")
+        print("(3): Busca A* com heurística de quantidade de peças erradas")
+        print("(4): Busca A* com heurística de distância de Manhattan")
+        print("-------------------------------------------------------------------")
         case = int(input("Escolha um algoritmo: "))
         menu.switch(case)
         
