@@ -6,18 +6,20 @@ from algorithms.busca_em_largura import busca_em_largura as BFS
 class metodos:
     def __init__(self):
         pass
-#BUSCA EM LARGURA
+    
     def busca_em_largura(self,estado_inicial, estado_final):
+        caminho = []
         solver = BFS()
-        solver.solve(estado_inicial, estado_final)
-    #BUSCA EM PROFUNDIDADE ITERATIVA
+        caminho = solver.solve(estado_inicial, estado_final)
+        
+        if caminho is not None:
+            print("Caminho da resolução: " + caminho)    
+        else:
+            print("Não foi encontrada solução")
+    
     def BPI(puzzle):
         return
-
-    #Busca A* com heurística de quantidade de peças erradas
     def BAW(puzzle):
         return
-
-    #Busca A* com heurística de distância de Manhattan
     def BAM(puzzle):
         return

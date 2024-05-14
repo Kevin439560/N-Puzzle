@@ -1,4 +1,4 @@
-from assets.menu import menu as menu_module 
+from menus.menu import menu as menu_module 
 
 def main():
     while(True):

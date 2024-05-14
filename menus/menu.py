@@ -1,4 +1,4 @@
-from metodos import metodos as metodos_module
+from menus.metodos import metodos as metodos_module
 from assets.utility import utility
 
 class menu:
@@ -22,8 +22,8 @@ class menu:
         metodos = metodos_module()      
         util = utility() 
         matriz_gerada = util.gerar_matriz()
-        matriz_embaralhada = util.embaralhar_matriz()
-        metodos.busca_em_largura(matriz_gerada, matriz_embaralhada)
+        matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
+        metodos.busca_em_largura(matriz_embaralhada, matriz_gerada)
         
         print("BL")
     

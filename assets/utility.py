@@ -36,8 +36,13 @@ class utility:
         return "O número não atende a restrição"
     
     def embaralhar_matriz(self, matriz):
+        linhas, colunas = matriz.shape
+        
         valores_matriz = matriz.flatten().tolist()
         random.shuffle(valores_matriz)
-        matriz_embaralhada = np.array(valores_matriz).reshape((self.linhas, self.colunas))
+        
+        matriz_embaralhada = np.array(valores_matriz).reshape((linhas, colunas))
+        
+        self.imprimir_matriz(matriz_embaralhada)
         
         return matriz_embaralhada

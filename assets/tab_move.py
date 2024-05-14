@@ -1,3 +1,5 @@
+import numpy as np
+
 class tab_move:
     def __init__(self, matriz):
         self.atualizar_dimensoes(matriz)
@@ -36,23 +38,23 @@ class tab_move:
             matriz[i, j], matriz[i, j + 1] = matriz[i, j + 1], matriz[i, j]
         return matriz
     
-    def caminhos_possiveis(self, matriz):
+    def caminhos_possiveis(self, estado):
         possibilidades = []
-        
-        possibilidade = matriz.copy()
-        if self.mover_para_cima(possibilidade) != matriz:
-            possibilidades.append(self.mover_para_cima(possibilidade))
+    
+        possibilidade = estado.copy()
+        if not np.array_equal(self.mover_para_cima(possibilidade), estado):
+            possibilidades.append(("cima", self.mover_para_cima(possibilidade)))
 
-        possibilidade = matriz.copy()
-        if self.mover_para_baixo(possibilidade) != matriz:
-            possibilidades.append(self.mover_para_baixo(possibilidade))
-            
-        possibilidade = matriz.copy()
-        if self.mover_para_esquerda(possibilidade) != matriz:
-            possibilidades.append(self.mover_para_esquerda(possibilidade))
+        possibilidade = estado.copy()
+        if not np.array_equal(self.mover_para_baixo(possibilidade), estado):
+            possibilidades.append(("baixo", self.mover_para_baixo(possibilidade)))
         
-        possibilidade = matriz.copy()
-        if self.mover_para_direita(possibilidade) != matriz:
-            possibilidades.append(self.mover_para_direita(possibilidade))
-            
+        possibilidade = estado.copy()
+        if not np.array_equal(self.mover_para_esquerda(possibilidade), estado):
+            possibilidades.append(("esquerda", self.mover_para_esquerda(possibilidade)))
+    
+        possibilidade = estado.copy()
+        if not np.array_equal(self.mover_para_direita(possibilidade), estado):
+            possibilidades.append(("direita", self.mover_para_direita(possibilidade)))
+    
         return possibilidades
