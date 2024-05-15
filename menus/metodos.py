@@ -7,19 +7,22 @@ class metodos:
     def __init__(self):
         pass
     
-    def busca_em_largura(self,estado_inicial, estado_final):
+    def busca_em_largura(self, estado_inicial, estado_final):
         caminho = []
         solver = BFS()
         caminho = solver.solve(estado_inicial, estado_final)
         
         if caminho is not None:
-            print("Caminho da resolução: " + caminho)    
+            caminho_str = " -> ".join([acao for acao, estado in caminho])
+            print("Caminho da resolução: " + caminho_str)
         else:
             print("Não foi encontrada solução")
     
-    def BPI(puzzle):
+    def BPI(self, puzzle):
         return
-    def BAW(puzzle):
+    
+    def BAW(self, puzzle):
         return
-    def BAM(puzzle):
+    
+    def BAM(self, puzzle):
         return

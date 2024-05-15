@@ -8,11 +8,9 @@ class utility:
         pass
     
     def imprimir_matriz(self, matriz):
-        print("Matriz de Nodes:")
+        print("Matriz:")
         for linha in matriz:
-            for node in linha:
-                print(node, end=" ")
-            print()
+            print(" ".join(str(node) for node in linha))
 
     def verifica_zeros_apos_virgula(self, numero):
         partes = str(numero).split('.')
@@ -30,8 +28,9 @@ class utility:
         if self.verifica_zeros_apos_virgula(verificacao):
             tabuleiro = board(int(N))
             matriz = tabuleiro.criar_matriz()
+            matriz = np.array(matriz, dtype=str)  # Converter matriz para string
             self.imprimir_matriz(matriz)
-            return tabuleiro.matriz
+            return matriz  # Retorna a matriz diretamente
     
         return "O número não atende a restrição"
     
@@ -41,7 +40,7 @@ class utility:
         valores_matriz = matriz.flatten().tolist()
         random.shuffle(valores_matriz)
         
-        matriz_embaralhada = np.array(valores_matriz).reshape((linhas, colunas))
+        matriz_embaralhada = np.array(valores_matriz, dtype=str).reshape((linhas, colunas))
         
         self.imprimir_matriz(matriz_embaralhada)
         
