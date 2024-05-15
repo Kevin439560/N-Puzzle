@@ -13,7 +13,7 @@ class busca_em_largura:
         print("Estao inicial")
         print(estado_inicial)
         explorado = set()
-        util = utility
+        util = utility()
         print(fronteira)
         while fronteira:
             node = fronteira.popleft()
@@ -21,6 +21,7 @@ class busca_em_largura:
             #print("Nó atual:", util.imprimir_matriz(valor))
             print(valor)
             if np.array_equal(valor, estado_final):
+                print("Entrou no primeiro condicional")
                 return self.construir_caminho(node)
             
             explorado.add(tuple(map(tuple, valor)))
@@ -29,6 +30,7 @@ class busca_em_largura:
                 estado_filho_tupla = tuple(map(tuple, estado_filho))
                 
                 if estado_filho_tupla not in explorado:
+                    print("Entrou no segundo condicional")
                     no_filho = bfs_node(estado_filho, node, acao)
                     fronteira.append(no_filho)
                     explorado.add(estado_filho_tupla)
