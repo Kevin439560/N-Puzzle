@@ -18,8 +18,6 @@ class busca_em_largura:
 
             print("Estado atual (valor):")
             print(np.array(valor))
-            print("Estado final:")
-            print(np.array(estado_final))
 
             if np.array_equal(valor, estado_final):
                 print("Solução encontrada")
