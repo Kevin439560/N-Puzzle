@@ -1,6 +1,7 @@
 from menus.menu import menu as menu_module 
 
 def main():
+    cont = 1
     while(True):
         menu = menu_module()  
         print("(1): Busca em largura")     
