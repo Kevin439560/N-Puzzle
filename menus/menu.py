@@ -27,7 +27,13 @@ class menu:
         
         print("BL")
     
-    def caseBPI():
+    def caseBPI(self):
+        metodos = metodos_module()      
+        util = utility() 
+        matriz_gerada = util.gerar_matriz()
+        matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
+        metodos.busca_em_profundidade(matriz_embaralhada, matriz_gerada)
+        
         print("BPI")
     
     def caseBAW():
