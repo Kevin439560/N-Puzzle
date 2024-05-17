@@ -48,3 +48,20 @@ class utility:
         self.imprimir_matriz(estado_atual)
         
         return estado_atual
+    
+    def pecas_erradas(self, estado_atual, estado_final):
+        return sum(1 for i, j in zip(estado_atual.flatten(), estado_final.flatten()) if i != j and i != '0')
+    
+    def distancia_manhatan(self, estado_atual, estado_final):
+        distancia = 0
+        tamanho = len(estado_atual)
+        
+        for i in range(tamanho):
+            for j in range(tamanho):
+                valor = estado_atual[i, j]
+                if valor != '_':
+                    posicao_desejada = np.argwhere(estado_final == valor)[0]
+                    linha_desejada, coluna_desejada = posicao_desejada
+                    distancia += abs(i - linha_desejada) + abs(j - coluna_desejada)
+                    
+        return distancia

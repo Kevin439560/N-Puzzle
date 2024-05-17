@@ -24,14 +24,20 @@ class menu:
         matriz_gerada = util.gerar_matriz()
         matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
         metodos.busca_em_largura(matriz_embaralhada, matriz_gerada)
-        
-        print("BL")
-    
+            
     def caseBPI():
         print("BPI")
     
-    def caseBAW():
-        print("BAW")
+    def caseBAW(self):
+        metodos = metodos_module()
+        util = utility()
+        matriz_gerada = util.gerar_matriz()
+        matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
+        metodos.a_estrela_pecas_erradas(matriz_embaralhada, matriz_gerada)
     
-    def caseBAM():
-        print("BAM")
+    def caseBAM(self):
+        metodos = metodos_module()
+        util = utility()
+        matriz_gerada = util.gerar_matriz()
+        matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
+        metodos.a_estrela_manhatan(matriz_embaralhada, matriz_gerada)
