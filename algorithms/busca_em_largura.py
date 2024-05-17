@@ -2,21 +2,22 @@ import numpy as np
 from collections import deque
 from assets.node import node as bfs_node
 from assets.tab_move import tab_move as tab
+from assets.metrics import Metrics
 
 class busca_em_largura:
     def __init__(self):
         pass
-    
+
     def solve(self, estado_inicial, estado_final):
+        metrics = Metrics()
+        metrics.start_timer()
+        
         estado_final = np.array(estado_final, dtype=str)
         fronteira = deque([bfs_node(np.array(estado_inicial, dtype=str))])
         explorado = set()
-        max_memoria = 0  # Para rastrear a memória máxima
-        nos_expandidos = 0  # Para rastrear o número de nós expandidos
-        total_filhos = 0  # Para rastrear o total de filhos gerados
 
         while fronteira:
-            max_memoria = max(max_memoria, len(fronteira) + len(explorado))
+            metrics.update_max_memoria(len(fronteira), len(explorado))
             node = fronteira.popleft()
             valor = node.valor
 
@@ -26,43 +27,33 @@ class busca_em_largura:
             print(np.array(estado_final))
 
             if np.array_equal(valor, estado_final):
+                metrics.stop_timer()
                 print("Solução encontrada")
-                print(f"Nós expandidos: {nos_expandidos}")
-                print(f"Memória máxima usada: {max_memoria}")
-                if nos_expandidos > 0:
-                    fator_ramificacao_media = total_filhos / nos_expandidos
-                else:
-                    fator_ramificacao_media = 0
-                print(f"Fator de ramificação média: {fator_ramificacao_media}")
+                metrics.print_metrics()
                 return self.construir_caminho(node)
-            
+
             explorado.add(tuple(map(tuple, valor)))
-            nos_expandidos += 1  # Incrementa o contador de nós expandidos
+            metrics.increment_nos_expandidos()
 
             filhos = list(self.caminhos_possiveis(valor))
-            total_filhos += len(filhos)  # Incrementa o total de filhos gerados
+            metrics.add_filhos(len(filhos))
 
             for acao, estado_filho in filhos:
                 estado_filho_tupla = tuple(map(tuple, estado_filho))
-                
+
                 if estado_filho_tupla not in explorado:
                     no_filho = bfs_node(estado_filho, node, acao)
                     fronteira.append(no_filho)
                     explorado.add(estado_filho_tupla)
-            
-        print(f"Nós expandidos: {nos_expandidos}")
-        print(f"Memória máxima usada: {max_memoria}")
-        if nos_expandidos > 0:
-            fator_ramificacao_media = total_filhos / nos_expandidos
-        else:
-            fator_ramificacao_media = 0
-        print(f"Fator de ramificação média: {fator_ramificacao_media}")
+
+        metrics.stop_timer()
+        metrics.print_metrics()
         return None
-        
+
     def caminhos_possiveis(self, estado):
         tab_move = tab(estado)
         return tab_move.caminhos_possiveis(estado)
-    
+
     def construir_caminho(self, node):
         caminho = []
         
