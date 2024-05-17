@@ -24,8 +24,7 @@ class menu:
         matriz_gerada = util.gerar_matriz()
         matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
         metodos.busca_em_largura(matriz_embaralhada, matriz_gerada)
-        
-        print("BL")
+
     
     def caseBPI(self):
         metodos = metodos_module()      
@@ -33,8 +32,7 @@ class menu:
         matriz_gerada = util.gerar_matriz()
         matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
         metodos.busca_em_profundidade(matriz_embaralhada, matriz_gerada)
-        
-        print("BPI")
+
     
     def caseBAW(self):
         metodos = metodos_module()
