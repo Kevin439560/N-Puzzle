@@ -7,7 +7,7 @@ from assets.metrics import Metrics
 class busca_em_largura:
     def __init__(self):
         pass
-
+    
     def solve(self, estado_inicial, estado_final):
         metrics = Metrics()
         metrics.start_timer()
@@ -31,7 +31,7 @@ class busca_em_largura:
                 print("Solução encontrada")
                 metrics.print_metrics()
                 return self.construir_caminho(node)
-
+            
             explorado.add(tuple(map(tuple, valor)))
             metrics.increment_nos_expandidos()
 
@@ -39,21 +39,23 @@ class busca_em_largura:
             metrics.add_filhos(len(filhos))
 
             for acao, estado_filho in filhos:
+                metrics.increment_passos()
                 estado_filho_tupla = tuple(map(tuple, estado_filho))
-
+                
                 if estado_filho_tupla not in explorado:
                     no_filho = bfs_node(estado_filho, node, acao)
                     fronteira.append(no_filho)
                     explorado.add(estado_filho_tupla)
-
+            
         metrics.stop_timer()
+        print("Solução não encontrada")
         metrics.print_metrics()
         return None
-
+        
     def caminhos_possiveis(self, estado):
         tab_move = tab(estado)
         return tab_move.caminhos_possiveis(estado)
-
+    
     def construir_caminho(self, node):
         caminho = []
         

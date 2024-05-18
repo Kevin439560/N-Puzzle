@@ -1,15 +1,18 @@
 import numpy as np
-from collections import deque
+import heapq
 from assets.node import node as bfs_node
 from assets.utility import utility as heuristicas
 from assets.tab_move import tab_move as tab
-import heapq
+from assets.metrics import Metrics
 
 class a_star:
     def __init__(self, heuristica):
         self.heuristica = heuristica
     
     def solve(self, estado_inicial, estado_final):
+        metrics = Metrics()
+        metrics.start_timer()
+        
         estado_inicial_node = bfs_node(valor=np.array(estado_inicial, dtype=str))
         estado_inicial_node.f = self.heuristica
         fronteira = []
@@ -20,8 +23,8 @@ class a_star:
         g_score = {estado_inicial_str: 0}
         f_score = {estado_inicial_str: self.heuristica}
         
-        total_filhos = 0
         while fronteira:
+            metrics.update_max_memoria(len(fronteira), len(explorado))
             atual_node = heapq.heappop(fronteira)
             valor = atual_node.valor
             
@@ -29,15 +32,19 @@ class a_star:
             print(valor)
             
             if np.array_equal(valor, estado_final):
+                metrics.stop_timer()
+                print("Solução encontrada")
+                metrics.print_metrics()
                 return self.construir_caminho(atual_node)
             
             explorado.add(tuple(map(tuple, valor)))
+            metrics.increment_nos_expandidos()
             
             filhos = list(self.caminhos_possiveis(valor))
-            
-            total_filhos += len(filhos)
+            metrics.add_filhos(len(filhos))
             
             for acao, estado_filho in filhos:
+                metrics.increment_passos()
                 estado_filho_tupla = tuple(map(tuple, estado_filho))
                 tentativa_g_score = g_score[str(valor.tolist())] + 1
 
@@ -47,7 +54,10 @@ class a_star:
                     no_filho = bfs_node(valor=estado_filho, pai=atual_node, acao=acao, g=tentativa_g_score, f=f_score[str(estado_filho.tolist())])
                     heapq.heappush(fronteira, no_filho)
                     explorado.add(estado_filho_tupla)
-                    
+        
+        metrics.stop_timer()
+        print("Solução não encontrada")
+        metrics.print_metrics()
         return None
         
     def estado_to_str(self, estado):
@@ -66,4 +76,3 @@ class a_star:
             
         caminho.reverse()
         return caminho
-        

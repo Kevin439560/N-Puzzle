@@ -18,7 +18,7 @@ class busca_em_profundidade:
 
         while fronteira:
             metrics.update_max_memoria(len(fronteira), len(explorado))
-            node = fronteira.pop()  # Usamos pop() para simular uma pilha
+            node = fronteira.pop()
             valor = node.valor
             profundidade = node.profundidade
 
@@ -42,6 +42,7 @@ class busca_em_profundidade:
                 metrics.add_filhos(len(filhos))
 
                 for acao, estado_filho in filhos:
+                    metrics.increment_passos()
                     estado_filho_tupla = tuple(map(tuple, estado_filho))
 
                     if estado_filho_tupla not in explorado:
