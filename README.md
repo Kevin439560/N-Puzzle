@@ -86,5 +86,7 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou env
 ## Feito por
 
 Áquilas Rodrigues Jucá: GitHub(https://github.com/aquilasjuca)
+
 Kevin de Freitas Sales: GitHub(https://github.com/Kevin439560)
+
 Thomas Henrique Carvalho Pinheiro: GitHub(https://github.com/Thomashq)
