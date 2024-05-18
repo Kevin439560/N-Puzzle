@@ -36,4 +36,3 @@ class Metrics:
         fator_ramificacao_media = self.total_filhos / self.nos_expandidos if self.nos_expandidos > 0 else 0
         print(f"Fator de ramificação média: {fator_ramificacao_media}")
         print(f"Tempo gasto: {self.elapsed_time():.4f} segundos")
-        print(f"Quantidade de passos: {self.passos}")

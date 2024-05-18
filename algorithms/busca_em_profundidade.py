@@ -32,7 +32,9 @@ class busca_em_profundidade:
                 metrics.stop_timer()
                 print("Solução encontrada")
                 metrics.print_metrics()
-                return self.construir_caminho(node)
+                caminho = self.construir_caminho(node)
+                print(f"Quantidade de passos: {len(caminho)}")
+                return caminho
 
             if profundidade < self.limite_profundidade:
                 explorado.add(tuple(map(tuple, valor)))

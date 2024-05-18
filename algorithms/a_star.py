@@ -35,7 +35,9 @@ class a_star:
                 metrics.stop_timer()
                 print("Solução encontrada")
                 metrics.print_metrics()
-                return self.construir_caminho(atual_node)
+                caminho = self.construir_caminho(atual_node)
+                print(f"Quantidade de passos: {len(caminho)}")
+                return caminho
             
             explorado.add(tuple(map(tuple, valor)))
             metrics.increment_nos_expandidos()

@@ -23,8 +23,6 @@ class metodos:
             print("Caminho da resolução: " + caminho_str)
         else:
             print("Não foi encontrada solução")
-
-        print(f"Tempo gasto: {tempo_gasto:.4f} segundos")
     
     def busca_em_profundidade(self, estado_inicial, estado_final):
         caminho = []
@@ -42,7 +40,6 @@ class metodos:
         else:
             print("Não foi encontrada solução")
 
-        print(f"Tempo gasto: {tempo_gasto:.4f} segundos")
     
     def a_estrela_pecas_erradas(self, estado_inicial, estado_final):
         caminho = []
@@ -60,8 +57,6 @@ class metodos:
             print("Caminho da resolução: " + caminho_str)
         else:
             print("Não foi encontrada solução")
-
-        print(f"Tempo gasto: {tempo_gasto:.4f} segundos")
         
     def a_estrela_manhatan(self, estado_inicial, estado_final):
         caminho = []
@@ -79,5 +74,3 @@ class metodos:
             print("Caminho da resolução: " + caminho_str)
         else:
             print("Não foi encontrada solução")
-
-        print(f"Tempo gasto: {tempo_gasto:.4f} segundos")
