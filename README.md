@@ -18,7 +18,7 @@ Este é um solucionador de N-Puzzle que utiliza diversos algoritmos de busca par
   - [A* com Heurística de Peças Erradas](#a-com-heurística-de-peças-erradas)
   - [A* com Heurística de Manhattan](#a-com-heurística-de-manhattan)
 - [Contribuições](#contribuições)
-- [Licença](#licença)
+- [Feito por](#feito-por)
 
 ## Introdução
 
