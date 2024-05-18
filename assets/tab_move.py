@@ -17,38 +17,38 @@ class tab_move:
     def mover_para_cima(self, matriz):
         i, j = self.encontrar_vazio(matriz)
         if i > 0:
-            matriz_copy = matriz.copy()  # Criar uma cópia da matriz
+            matriz_copy = matriz.copy() 
             matriz_copy[i, j], matriz_copy[i - 1, j] = matriz_copy[i - 1, j], matriz_copy[i, j]
-            return matriz_copy  # Retornar a matriz modificada
+            return matriz_copy  
         else:
-            return matriz  # Se o movimento não for possível, retornar a matriz original
+            return matriz  
     
     def mover_para_baixo(self, matriz):
         i, j = self.encontrar_vazio(matriz)
         if i < self.linhas - 1:
-            matriz_copy = matriz.copy()  # Criar uma cópia da matriz
+            matriz_copy = matriz.copy()  
             matriz_copy[i, j], matriz_copy[i + 1, j] = matriz_copy[i + 1, j], matriz_copy[i, j]
-            return matriz_copy  # Retornar a matriz modificada
+            return matriz_copy  
         else:
-            return matriz  # Se o movimento não for possível, retornar a matriz original
+            return matriz  
     
     def mover_para_esquerda(self, matriz):
         i, j = self.encontrar_vazio(matriz)
         if j > 0:
-            matriz_copy = matriz.copy()  # Criar uma cópia da matriz
+            matriz_copy = matriz.copy()  
             matriz_copy[i, j], matriz_copy[i, j - 1] = matriz_copy[i, j - 1], matriz_copy[i, j]
-            return matriz_copy  # Retornar a matriz modificada
+            return matriz_copy  
         else:
-            return matriz  # Se o movimento não for possível, retornar a matriz original
+            return matriz  
     
     def mover_para_direita(self, matriz):
         i, j = self.encontrar_vazio(matriz)
         if j < self.colunas - 1:
-            matriz_copy = matriz.copy()  # Criar uma cópia da matriz
+            matriz_copy = matriz.copy()  
             matriz_copy[i, j], matriz_copy[i, j + 1] = matriz_copy[i, j + 1], matriz_copy[i, j]
-            return matriz_copy  # Retornar a matriz modificada
+            return matriz_copy  
         else:
-            return matriz  # Se o movimento não for possível, retornar a matriz original
+            return matriz  
     
     def caminhos_possiveis(self, estado):
         possibilidades = []

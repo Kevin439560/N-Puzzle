@@ -11,11 +11,9 @@ class menu:
         }
     
     def switch(self, case):
-        if case in self.cases:
-            # Se a chave estiver presente, chama a função associada à chave
+        if case in self.cases:           
             self.cases[case]()
         else:
-            # Se a chave não estiver presente, imprime 'Caso inválido'
             print("Caso inválido")
     
     def caseBL(self):
@@ -25,14 +23,12 @@ class menu:
         matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
         metodos.busca_em_largura(matriz_embaralhada, matriz_gerada)
 
-    
     def caseBPI(self):
         metodos = metodos_module()      
         util = utility() 
         matriz_gerada = util.gerar_matriz()
         matriz_embaralhada = util.embaralhar_matriz(matriz_gerada)
         metodos.busca_em_profundidade(matriz_embaralhada, matriz_gerada)
-
     
     def caseBAW(self):
         metodos = metodos_module()

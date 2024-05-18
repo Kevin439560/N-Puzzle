@@ -1,4 +1,5 @@
 import math
+import random
 import numpy as np 
 from .tab import *
 from .node import *
@@ -15,7 +16,7 @@ class utility:
 
     def verifica_zeros_apos_virgula(self, numero):
         partes = str(numero).split('.')
-        if len(partes) == 2:  # Verifica se o número possui parte decimal
+        if len(partes) == 2:  
             parte_decimal = partes[1]
             if all(digito == '0' for digito in parte_decimal):
                 return True
@@ -29,9 +30,9 @@ class utility:
         if self.verifica_zeros_apos_virgula(verificacao):
             tabuleiro = board(int(N))
             matriz = tabuleiro.criar_matriz()
-            matriz = np.array(matriz, dtype=str)  # Converter matriz para string
+            matriz = np.array(matriz, dtype=str)  
             self.imprimir_matriz(matriz)
-            return matriz  # Retorna a matriz diretamente
+            return matriz  
     
         return "O número não atende a restrição"
     

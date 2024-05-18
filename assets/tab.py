@@ -1,5 +1,3 @@
-import math
-import random
 import numpy as np 
 
 class board:
@@ -17,7 +15,7 @@ class board:
     def criar_matriz(self):
         matriz = np.empty((self.linhas, self.colunas), dtype=object)
         valores_unicos = list(range(1, self.N + 1))
-        valores_unicos.append('_')  # Adiciona o espaço vazio representado por um underline
+        valores_unicos.append('_')  
         
         indice_valor = 0
         for i in range(self.linhas):
